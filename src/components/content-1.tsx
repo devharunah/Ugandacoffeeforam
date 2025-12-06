@@ -28,12 +28,12 @@ export default function ContentSection() {
                     <h2 className="relative z-10 mx-auto max-w-xl text-3xl font-medium text-center sm:text-left sm:text-4xl lg:text-5xl">
                         Connecting Coffee Farmers to the World
                     </h2>
-                        <p className="text-muted-foreground font-inter leading-relaxed">
+                        <p className="text-muted-foreground  font-manrope text-lg leading-relaxed">
                             Our marketplace connects coffee farmers to the world by{' '}
                             <span className="text-accent-foreground font-semibold">giving them a simple way to share their products online</span>.
                         </p>
 
-                        <p className="text-muted-foreground  leading-relaxed">
+                        <p className="text-muted-foreground font-manrope text-lg  leading-relaxed">
                             Once a farmer creates an account, they can immediately start posting their coffee or coffee-related products on the platform.
                             Buyers can view posts, like, and comment. When interested, buyers can access the farmer’s phone number to contact them directly.
                         </p>
@@ -54,19 +54,17 @@ export default function ContentSection() {
                     <h2 className="relative z-10 text-3xl font-inter font-medium text-center sm:text-left sm:text-4xl lg:text-5xl">
                      A Community for Learning and Support
                 </h2>
-                        <p className="text-muted-foreground font-inter leading-relaxed">
-                            Our marketplace connects coffee farmers to the world by{' '}
-                            <span className="text-accent-foreground font-semibold">giving them a simple way to share their products online</span>.
+                        <p className="text-muted-foreground font-manrope text-lg leading-relaxed">
+                          Our platform gives coffee farmers a space to  <span className="text-accent-foreground font-semibold">learn from each other and grow</span> together
+                          
                         </p>
-
-                        <p className="text-muted-foreground font-manrope  leading-relaxed">
-                            Once a farmer creates an account, they can immediately start posting their coffee or coffee-related products on the platform.
-                            Buyers can view posts, like, and comment. When interested, buyers can access the farmer’s phone number to contact them directly.
+                        <p className="text-muted-foreground font-manrope text-lg leading-relaxed">
+                        Once a farmer joins the community, they can ask questions, share tips, and post what they’re using in the industry. Other farmers can reply, comment, and exchange ideas, creating a supportive place where everyone can discover new practices and improve their skills.
                         </p>
 
                         <div className="pt-2">
                             <Button className="shadow-sm">
-                                <span>Join the Marketplace</span>
+                                <span>Start Learning</span>
                             </Button>
                         </div>
                     </div>
@@ -86,8 +84,6 @@ export default function ContentSection() {
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </section>
