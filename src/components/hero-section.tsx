@@ -79,7 +79,7 @@ export default function HeroSection() {
                                             <Button
                                                 aria-label="submit"
                                                 size="sm"
-                                                className="rounded-(--radius)">
+                                                className="rounded">
                                                 <span className="hidden md:block">Join waitlist</span>
                                                 <SendHorizonal
                                                     className="relative mx-auto size-5 md:hidden"

@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #0C4B23;
+  --primary: #035503;
   --primary-foreground: #ffffff;
   --secondary: #4b5563;
   --secondary-foreground: #ffffff;
@@ -48,7 +48,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --primary: #22c55e;
+    --primary: #035503;
     --primary-foreground: #0a0a0a;
     --secondary: #71717a;
     --secondary-foreground: #0a0a0a;
