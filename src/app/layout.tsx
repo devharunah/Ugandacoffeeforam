@@ -3,7 +3,7 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-anton",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 const manRope = Manrope({
@@ -13,7 +13,7 @@ const manRope = Manrope({
 
 export const metadata: Metadata = {
   title: "Uganda Coffee Forum",
-  description: "A platform connecting coffee farmers with a global community for learning, selling, and support.",
+  description: "",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manRope.variable}antialiased`}
+        className={`${manRope.variable} ${inter.variable}antialiased`}
       >
         {children}
       </body>

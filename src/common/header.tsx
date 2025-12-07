@@ -80,7 +80,7 @@ export const HeroHeader = () => {
                                 <button
                                     className={cn(isScrolled && 'lg:hidden')}
                                 >
-                                     <Link href="#newsletter">
+                                     <Link href="whishlist">
                                         <span className='text-background'>Join Waitlist</span>
                                     </Link>
                                 </button>

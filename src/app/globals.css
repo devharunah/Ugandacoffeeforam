@@ -61,7 +61,9 @@
     --on-surface-variant: #a1a1aa;
   }
 }
-
+html {
+  scroll-behavior: smooth;
+}
 /* body {
  
 } */

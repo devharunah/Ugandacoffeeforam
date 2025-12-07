@@ -1,6 +1,9 @@
+'use client'
 import { Button } from '@/src/components/ui/button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 export default function ContentSection() {
+    const router = useRouter()
     return (
         <section className="py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-6">
@@ -39,7 +42,10 @@ export default function ContentSection() {
                         </p>
 
                         <div className="pt-2">
-                            <Button className="shadow-sm">
+                            <Button 
+                            onClick={()=>{router.push('/whishlist')}}
+                            className="shadow-sm">
+                               
                                 <span>Join the Marketplace</span>
                             </Button>
                         </div>
@@ -63,7 +69,9 @@ export default function ContentSection() {
                         </p>
 
                         <div className="pt-2">
-                            <Button className="shadow-sm">
+                            <Button 
+                             onClick={()=>{router.push('/whishlist')}}
+                            className="shadow-sm">
                                 <span>Start Learning</span>
                             </Button>
                         </div>

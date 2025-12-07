@@ -109,7 +109,7 @@ export default function HeroSection() {
                                 }}
                                 className="mt-12">
                                 <form
-                                    id='#newsletter'
+                                    id='newsletter'
                                     onSubmit={handleSubmit}
                                     className="mx-auto max-w-sm"
                                     aria-live="polite"
