@@ -18,7 +18,6 @@ export async function POST(req: NextRequest) {
     const { data, error } = await supabase
       .from('user_emails')
       .insert([{ email, created_at: new Date().toISOString() }]);
-
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }

@@ -69,7 +69,7 @@ export default function WishlistPage() {
                                             speedSegment={0.3}
                                             as="h1"
                                             className="text-balance text-5xl font-inter font-medium md:text-7xl">
-                                          Uganda Coffe Forum
+                                          Uganda Coffee Forum
                                         </TextEffect>
                                         <TextEffect>
                                             A platform that connect's you with a global community to solve your farm challenges, learn new techniques, 
