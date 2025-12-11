@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from '../common/logo'
 
 const links = [
     {
@@ -35,7 +36,7 @@ export default function FooterSection() {
                     href="/"
                     aria-label="go home"
                     className="mx-auto block size-fit">
-                    <h1 className="text-2xl font-bold">Uganda Coffee Foram</h1>
+                  <Logo/>
                 </Link>
 
                 <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
@@ -126,7 +127,7 @@ export default function FooterSection() {
                 </div>
                 <div className='flex justify-between'>
                 <span>Made with ❤ in Uganda</span>
-                <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} Uganda Coffee Forum, All rights reserved</span>
+                <span className="text-muted-foreground justify-between text-center  flex text-sm"> © {new Date().getFullYear()} <Logo/>  </span>
                 <Link href="https://www.instagram.com/kakooza_harunah/">
                 Reach out
                 </Link>

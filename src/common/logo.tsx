@@ -1,7 +1,8 @@
+import Image from "next/image"
 const Logo = () => {
     return (
         <div>
-            <h1 className="font-bold text-lg">UCF</h1>
+         <Image src="/images/Kawa.png" alt="Kawa" width={80} height={80} />
         </div>
     )
 }

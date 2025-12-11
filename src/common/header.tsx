@@ -36,7 +36,6 @@ export const HeroHeader = () => {
                                 aria-label="home"
                                 className="flex items-center space-x-2">
                                 <Logo />
-                                <h1>Uganda Coffee Foram</h1>
                             </Link>
 
                             <button

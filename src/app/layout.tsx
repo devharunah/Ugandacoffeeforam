@@ -12,8 +12,8 @@ const manRope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Uganda Coffee Forum",
-  description: "",
+  title: "Kawa",
+  description: "A Cofffee market place and community for Coffee Farmers",
 };
 
 export default function RootLayout({
