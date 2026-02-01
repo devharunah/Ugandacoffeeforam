@@ -6,16 +6,13 @@ import Link from 'next/link'
 import React from 'react'
 import Logo from './logo'
 const menuItems = [
-    { name: 'Feed Page', href: '#link' },
-    { name: 'Profile', href: '#link' },
-    { name: 'Products', href: '#link' },
-    { name: 'Pricing', href: '#link' },
+    { name: 'FQS', href: '#FQS' },
+    { name: 'Team', href: '#' },
+    { name: 'About', href: '#about' },
 ]
-
 export const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
-
     React.useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50)
@@ -37,7 +34,6 @@ export const HeroHeader = () => {
                                 className="flex items-center space-x-2">
                                 <Logo />
                             </Link>
-
                             <button
                                 onClick={() => setMenuState(!menuState)}
                                 aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
@@ -76,13 +72,6 @@ export const HeroHeader = () => {
                                 </ul>
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                                <button
-                                    className={cn(isScrolled && 'lg:hidden')}
-                                >
-                                     <Link href="whishlist">
-                                        <span className='text-background'>Join Waitlist</span>
-                                    </Link>
-                                </button>
                                 {/* <Button
                                     asChild
                                     size="sm"
@@ -92,9 +81,9 @@ export const HeroHeader = () => {
                                 <Button
                                     asChild
                                     size="sm"
-                                    className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <Link href="#">
-                                        <span>Join waitlist</span>
+                                   >
+                                    <Link href="#about">
+                                        <span>More Info</span>
                                     </Link>
                                 </Button>
                             </div>

@@ -7,6 +7,7 @@ import { Variants } from 'framer-motion'
 import { Mail, SendHorizonal } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { HeroHeader } from '../common/header'
+import AnimatedBtn1 from './mvpblocks/animated-btn1'
 
 
 const transitionVariants: Variants = {
@@ -84,7 +85,7 @@ export default function HeroSection() {
                                 speedSegment={0.3}
                                 as="h1"
                                 className="text-balance text-5xl font-inter font-medium md:text-7xl">
-                              Ask,Learn and Sell Quality Coffee
+                              Post and Sell Quality Coffee
                             </TextEffect>
                             <TextEffect
                                 per="line"
@@ -93,11 +94,12 @@ export default function HeroSection() {
                                 delay={0.5}
                                 as="p"
                                 className="mx-auto font-manrope mt-6 max-w-2xl text-pretty text-lg">
-                             A platform that connect's you with a global community to solve your farm challenges, learn new techniques, and market your exceptional harvest directly to buyers.
+                           A coffee marketplace where farmers showcase their coffee and connect directly with buyers.
                             </TextEffect>
                             <AnimatedGroup
                                 variants={{
                                     container: {
+                                        
                                         visible: {
                                             transition: {
                                                 staggerChildren: 0.1,
@@ -108,40 +110,9 @@ export default function HeroSection() {
                                     item: transitionVariants,
                                 }}
                                 className="mt-12">
-                                <form
-                                    id='newsletter'
-                                    onSubmit={handleSubmit}
-                                    className="mx-auto max-w-sm"
-                                    aria-live="polite"
-                                >
-                                    <div  className="relative grid grid-cols-[1fr_auto] items-center rounded-[calc(var(--radius)+0.5rem)]  pr-2 shadow shadow-zinc-950/5">
-                                        <Mail className="pointer-events-none absolute inset-y-0 left-4 my-auto size-4" />
-                                        <input
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            placeholder="Your mail address"
-                                            className="h-12 w-full bg-transparent pl-12 focus:outline-none"
-                                            type="email"
-                                            aria-label="email"
-                                            disabled={loading}
-                                        />
-
-                                        <div className="md:pr-1.5 lg:pr-0">
-                                            <Button
-                                                aria-label="submit"
-                                                size="sm"
-                                                className="rounded flex items-center gap-2"
-                                                disabled={loading}
-                                            >
-                                                <span className="hidden md:block">{loading ? 'Sending…' : 'Join waitlist'}</span>
-                                                <SendHorizonal
-                                                    className="relative mx-auto size-5 md:hidden"
-                                                    strokeWidth={2}
-                                                />
-                                            </Button>
-                                        </div>
+                                <div  className="relative grid grid-cols-[1fr_auto] items-center pr-2 ">
+                                       <AnimatedBtn1/>
                                     </div>
-                                </form>
                             </AnimatedGroup>
                         </div>
                     </div>

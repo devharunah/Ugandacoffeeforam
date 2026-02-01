@@ -1,11 +1,13 @@
 'use client'
 import { Button } from '@/src/components/ui/button'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import WhatsAppModal from './whatsapp-modal'
+
 export default function ContentSection() {
-    const router = useRouter()
+    const [showModal, setShowModal] = useState(false)
     return (
-        <section className="py-16 md:py-24">
+        <section id='about' className="py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-6">
                 
                 <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-12 lg:gap-20 items-center">
@@ -29,24 +31,24 @@ export default function ContentSection() {
                     {/* Text column */}
                     <div className="space-y-5">
                     <h2 className="relative z-10 mx-auto max-w-xl text-3xl font-medium text-center sm:text-left sm:text-4xl lg:text-5xl">
-                        Connecting Coffee Farmers to the World
+                        Post Your Coffee and Products Online
                     </h2>
                         <p className="text-muted-foreground  font-manrope text-lg leading-relaxed">
-                            Our marketplace connects coffee farmers to the world by{' '}
-                            <span className="text-accent-foreground font-semibold">giving them a simple way to share their products online</span>.
+                            We empower farmers, cafes, and suppliers by{' '}
+                            <span className="text-accent-foreground font-semibold">providing a simple way to post and showcase their coffee online</span>.
                         </p>
 
                         <p className="text-muted-foreground font-manrope text-lg  leading-relaxed">
-                            Once a farmer creates an account, they can immediately start posting their coffee or coffee-related products on the platform.
-                            Buyers can view posts, like, and comment. When interested, buyers can access the farmer’s phone number to contact them directly.
+                            Create an account to upload your inventory, set prices, and share details. Your products become instantly visible to a marketplace of potential buyers looking for quality coffee.
                         </p>
 
                         <div className="pt-2">
                             <Button 
-                            onClick={()=>{router.push('/whishlist')}}
+                            asChild
                             className="shadow-sm">
-                               
-                                <span>Join the Marketplace</span>
+                               <a href="/kawa.apk" download onClick={() => setShowModal(true)}>
+                                <span>Download Kawa</span>
+                               </a>
                             </Button>
                         </div>
                     </div>
@@ -58,21 +60,23 @@ export default function ContentSection() {
                     {/* Text column */}
                     <div className="space-y-5">
                     <h2 className="relative z-10 text-3xl font-inter font-medium text-center sm:text-left sm:text-4xl lg:text-5xl">
-                     A Community for Learning and Support
+                     Get Connected to People Who Need It
                 </h2>
                         <p className="text-muted-foreground font-manrope text-lg leading-relaxed">
-                          Our platform gives coffee farmers a space to  <span className="text-accent-foreground font-semibold">learn from each other and grow</span> together
+                          Our platform bridges the gap, ensuring you  <span className="text-accent-foreground font-semibold">connect directly with the people who need your coffee</span>.
                           
                         </p>
                         <p className="text-muted-foreground font-manrope text-lg leading-relaxed">
-                        Once a farmer joins the community, they can ask questions, share tips, and post what they’re using in the industry. Other farmers can reply, comment, and exchange ideas, creating a supportive place where everyone can discover new practices and improve their skills.
+                        Reach buyers, roasters, and coffee enthusiasts directly. By listing your products, you open the door to new business relationships and direct trade opportunities without intermediaries.
                         </p>
 
                         <div className="pt-2">
                             <Button 
-                             onClick={()=>{router.push('/whishlist')}}
+                             asChild
                             className="shadow-sm">
-                                <span>Start Learning</span>
+                                <a href="/kawa.apk" download onClick={() => setShowModal(true)}>
+                                <span>Download Kawa</span>
+                                </a>
                             </Button>
                         </div>
                     </div>
@@ -94,6 +98,7 @@ export default function ContentSection() {
                     </div>
                 </div>
             </div>
+            <WhatsAppModal isOpen={showModal} onClose={() => setShowModal(false)} />
         </section>
     )
 }
