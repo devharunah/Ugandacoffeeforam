@@ -13,7 +13,7 @@ const manRope = Manrope({
 
 export const metadata: Metadata = {
   title: "Kawa",
-  description: "A Cofffee market place and community for Coffee Farmers",
+  description: "Coffee Marketplace",
 };
 
 export default function RootLayout({
