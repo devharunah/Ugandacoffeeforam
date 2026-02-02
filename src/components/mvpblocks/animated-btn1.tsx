@@ -1,17 +1,17 @@
 'use client';
 
+import WhatsAppModal from '@/src/components/whatsapp-modal';
 import { useState } from 'react';
-import WhatsAppModal from '../whatsapp-modal';
 
 export default function AnimatedBtn1() {
   const [showModal, setShowModal] = useState(false);
+  const appurl = "https://drive.google.com/file/d/1UDnxp1Mdv3gEgwU-onE7AhcHe57AcCD3/view?usp=drive_link"
   return (
     <div className="flex items-center justify-center">
-      <a
-        href="/kawa.apk"
-        download
-        onClick={() => setShowModal(true)}
-        className="bubbleeffectbtn flex items-center justify-center no-underline"
+      <button
+        type="button"
+        onClick={() => window.open(appurl, '_blank')}
+        className="bubbleeffectbtn flex items-center justify-center no-underline border-none p-0"
       >
         <style jsx>{`
           .bubbleeffectbtn {
@@ -45,7 +45,6 @@ export default function AnimatedBtn1() {
             );
             transition: all 0.6s ease;
           }
-
           .bubbleeffectbtn:hover::before {
             left: 120%;
           }
@@ -73,7 +72,7 @@ export default function AnimatedBtn1() {
         `}</style>
 
         <span>Get for Android</span>
-      </a>
+      </button>
       <WhatsAppModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );

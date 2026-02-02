@@ -1,11 +1,12 @@
 'use client'
 import { Button } from '@/src/components/ui/button'
+import WhatsAppModal from '@/src/components/whatsapp-modal'
 import Image from 'next/image'
 import { useState } from 'react'
-import WhatsAppModal from './whatsapp-modal'
 
 export default function ContentSection() {
     const [showModal, setShowModal] = useState(false)
+    const appurl = "https://drive.google.com/file/d/1UDnxp1Mdv3gEgwU-onE7AhcHe57AcCD3/view?usp=drive_link"
     return (
         <section id='about' className="py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-6">
@@ -46,7 +47,8 @@ export default function ContentSection() {
                             <Button 
                             asChild
                             className="shadow-sm">
-                               <a href="/kawa.apk" download onClick={() => setShowModal(true)}>
+                               <a href="#" 
+                               onClick={(e) => {e.preventDefault(); window.open(appurl, '_blank');}}>
                                 <span>Download Kawa</span>
                                </a>
                             </Button>
@@ -74,7 +76,9 @@ export default function ContentSection() {
                             <Button 
                              asChild
                             className="shadow-sm">
-                                <a href="/kawa.apk" download onClick={() => setShowModal(true)}>
+                                <a href="#" 
+                               onClick={(e) => {e.preventDefault(); window.open(appurl, '_blank');}}
+                               >
                                 <span>Download Kawa</span>
                                 </a>
                             </Button>

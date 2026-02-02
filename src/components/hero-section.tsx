@@ -1,10 +1,8 @@
 "use client"
 
 import { AnimatedGroup } from '@/src/components/ui/animated-group'
-import { Button } from '@/src/components/ui/button'
 import { TextEffect } from '@/src/components/ui/text-effect'
 import { Variants } from 'framer-motion'
-import { Mail, SendHorizonal } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { HeroHeader } from '../common/header'
 import AnimatedBtn1 from './mvpblocks/animated-btn1'
@@ -99,7 +97,7 @@ export default function HeroSection() {
                             <AnimatedGroup
                                 variants={{
                                     container: {
-                                        
+
                                         visible: {
                                             transition: {
                                                 staggerChildren: 0.1,

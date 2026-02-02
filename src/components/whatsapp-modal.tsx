@@ -19,8 +19,10 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
         return () => setMounted(false)
     }, [])
 
-    const handleJoin = () => {
+    const handleAction = () => {
         window.open('https://chat.whatsapp.com/EGefoJqLnIO7YLOBWHnf99?mode=gi_t', '_blank')
+        // Open Download
+        window.open('https://drive.google.com/file/d/1UDnxp1Mdv3gEgwU-onE7AhcHe57AcCD3/view?usp=drive_link', '_blank')
         onClose()
     }
 
@@ -29,20 +31,20 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
     return createPortal(
         <AnimatePresence>
             {isOpen && (
-                <>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm"
                     />
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: '50%', x: '-50%' }}
-                        animate={{ opacity: 1, scale: 1, y: '-50%', x: '-50%' }}
-                        exit={{ opacity: 0, scale: 0.95, y: '50%', x: '-50%' }}
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: "spring", duration: 0.5 }}
-                        className="fixed left-1/2 top-1/2 z-[101] w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white p-6 shadow-2xl"
+                        className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl z-[101]"
                     >
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-xl font-bold text-gray-900">Join the Community</h3>
@@ -52,7 +54,7 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
                         </div>
                         
                         <p className="text-gray-600 mb-6 leading-relaxed">
-                            Stay updated with the latest news and connect with other farmers and buyers. Join our WhatsApp group for real-time updates!
+                            Join our free WhatsApp group for the latest updates and versions.
                         </p>
 
                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
@@ -64,14 +66,14 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
                                 Close
                             </Button>
                             <Button 
-                                onClick={handleJoin}
+                                onClick={handleAction}
                                 className="bg-[#035503] hover:opacity-90 text-white font-semibold"
                             >
-                                Join WhatsApp Group
+                                Download & Join
                             </Button>
                         </div>
                     </motion.div>
-                </>
+                </div>
             )}
         </AnimatePresence>,
         document.body
