@@ -48,7 +48,7 @@ export default function ContentSection() {
                             asChild
                             className="shadow-sm">
                                <a href="#" 
-                               onClick={(e) => {e.preventDefault(); window.open(appurl, '_blank');}}>
+                               onClick={(e) => {e.preventDefault(); setShowModal(true);}}>
                                 <span>Download Kawa</span>
                                </a>
                             </Button>
@@ -77,7 +77,7 @@ export default function ContentSection() {
                              asChild
                             className="shadow-sm">
                                 <a href="#" 
-                               onClick={(e) => {e.preventDefault(); window.open(appurl, '_blank');}}
+                               onClick={(e) => {e.preventDefault(); setShowModal(true);}}
                                >
                                 <span>Download Kawa</span>
                                 </a>

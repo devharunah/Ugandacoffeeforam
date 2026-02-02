@@ -31,7 +31,7 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
     return createPortal(
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+                <div className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -44,7 +44,7 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: "spring", duration: 0.5 }}
-                        className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl z-[101]"
+                        className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl z-101"
                     >
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-xl font-bold text-gray-900">Join the Community</h3>

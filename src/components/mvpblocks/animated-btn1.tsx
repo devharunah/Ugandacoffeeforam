@@ -5,12 +5,11 @@ import { useState } from 'react';
 
 export default function AnimatedBtn1() {
   const [showModal, setShowModal] = useState(false);
-  const appurl = "https://drive.google.com/file/d/1UDnxp1Mdv3gEgwU-onE7AhcHe57AcCD3/view?usp=drive_link"
   return (
     <div className="flex items-center justify-center">
       <button
         type="button"
-        onClick={() => window.open(appurl, '_blank')}
+        onClick={() => setShowModal(true)}
         className="bubbleeffectbtn flex items-center justify-center no-underline border-none p-0"
       >
         <style jsx>{`
