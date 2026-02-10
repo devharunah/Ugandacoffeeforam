@@ -5,8 +5,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 export default function ContentSection() {
+    function handleClick() {
+        window.open(appurl, '_blank')
+    }
     const [showModal, setShowModal] = useState(false)
-    const appurl = "https://drive.google.com/file/d/1UDnxp1Mdv3gEgwU-onE7AhcHe57AcCD3/view?usp=drive_link"
+    const appurl = "https://www.mediafire.com/file/tp7trzhaz7f92im/Kawa_%25284%2529.apk/file"
     return (
         <section id='about' className="py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-6">
@@ -48,7 +51,7 @@ export default function ContentSection() {
                             asChild
                             className="shadow-sm">
                                <a href="#" 
-                               onClick={(e) => {e.preventDefault(); setShowModal(true);}}>
+                               onClick={(e) => {e.preventDefault(); handleClick();}}>
                                 <span>Download Kawa</span>
                                </a>
                             </Button>
@@ -77,7 +80,7 @@ export default function ContentSection() {
                              asChild
                             className="shadow-sm">
                                 <a href="#" 
-                               onClick={(e) => {e.preventDefault(); setShowModal(true);}}
+                               onClick={(e) => {e.preventDefault(); handleClick();}}
                                >
                                 <span>Download Kawa</span>
                                 </a>

@@ -1,6 +1,7 @@
 "use client"
 
 import { AnimatedGroup } from '@/src/components/ui/animated-group'
+import PhoneMockup from '@/src/components/ui/phone-mockup'
 import { TextEffect } from '@/src/components/ui/text-effect'
 import { Variants } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
@@ -77,7 +78,11 @@ export default function HeroSection() {
             <main className="bg-linear-to-r from-white from-10%  via-30% to-green-50 to-90% ...   overflow-hidden">
                 <section>
                     <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-32 lg:pt-48">
-                        <div className="relative z-10 mx-auto max-w-4xl text-center">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div className="flex justify-center lg:justify-start">
+                                <PhoneMockup imageUrl="/images/appmockup.jpeg" />
+                            </div>
+                            <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left">
                             <TextEffect
                                 preset="fade-in-blur"
                                 speedSegment={0.3}
@@ -91,7 +96,7 @@ export default function HeroSection() {
                                 speedSegment={0.3}
                                 delay={0.5}
                                 as="p"
-                                className="mx-auto font-manrope mt-6 max-w-2xl text-pretty text-lg">
+                                className="font-manrope mt-6 max-w-2xl text-pretty text-lg">
                            A coffee marketplace where farmers showcase their coffee and connect directly with buyers.
                             </TextEffect>
                             <AnimatedGroup
@@ -112,6 +117,7 @@ export default function HeroSection() {
                                        <AnimatedBtn1/>
                                     </div>
                             </AnimatedGroup>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -136,4 +142,3 @@ export default function HeroSection() {
         </>
     )
 }
-

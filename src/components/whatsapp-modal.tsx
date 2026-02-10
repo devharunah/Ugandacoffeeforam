@@ -22,7 +22,7 @@ export default function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
     const handleAction = () => {
         window.open('https://chat.whatsapp.com/EGefoJqLnIO7YLOBWHnf99?mode=gi_t', '_blank')
         // Open Download
-        window.open('https://drive.google.com/file/d/1UDnxp1Mdv3gEgwU-onE7AhcHe57AcCD3/view?usp=drive_link', '_blank')
+        window.open('https://www.mediafire.com/file/tp7trzhaz7f92im/Kawa_%25284%2529.apk/file', '_blank')
         onClose()
     }
 

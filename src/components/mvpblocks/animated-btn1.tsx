@@ -5,11 +5,14 @@ import { useState } from 'react';
 
 export default function AnimatedBtn1() {
   const [showModal, setShowModal] = useState(false);
+  function handleClick() {
+    window.open('https://www.mediafire.com/file/tp7trzhaz7f92im/Kawa_%25284%2529.apk/file', '_blank');
+  }
   return (
     <div className="flex items-center justify-center">
       <button
         type="button"
-        onClick={() => setShowModal(true)}
+        onClick={handleClick}
         className="bubbleeffectbtn flex items-center justify-center no-underline border-none p-0"
       >
         <style jsx>{`
