@@ -9,7 +9,7 @@ export default function ContentSection() {
         window.open(appurl, '_blank')
     }
     const [showModal, setShowModal] = useState(false)
-    const appurl = "https://www.mediafire.com/file/tp7trzhaz7f92im/Kawa_%25284%2529.apk/file"
+    const appurl = "https://www.mediafire.com/file/um0py3j8tkpo1ns/Kawa.apk/file"
     return (
         <section id='about' className="py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-6">

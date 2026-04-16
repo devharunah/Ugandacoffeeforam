@@ -14,7 +14,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useRef, useState } from 'react';
 
-const APP_DOWNLOAD_URL = "https://www.mediafire.com/file/tp7trzhaz7f92im/Kawa_%25284%2529.apk/file";
+const APP_DOWNLOAD_URL = "https://www.mediafire.com/file/um0py3j8tkpo1ns/Kawa.apk/file";
 
 const PhoneMockup = ({ imageUrl, alt, glowColor, className }: { imageUrl: string, alt: string, glowColor: string, className?: string }) => {
   return (
