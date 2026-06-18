@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Leaf, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
+import Logo from "./logo";
 
 const links = [
   { label: "Solutions", href: "#solutions" },
@@ -13,11 +14,8 @@ export default function SiteNav() {
   return (
     <header className="nav">
       <div className="container inner">
-        <Link href="#top" className="brand">
-          <span className="mark">
-            <Leaf />
-          </span>
-          {siteConfig.name}
+        <Link href="#top" className="brand" aria-label={siteConfig.name}>
+          <Logo size={34} />
         </Link>
         <nav className="links">
           {links.map((l) => (

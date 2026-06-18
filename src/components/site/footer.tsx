@@ -1,6 +1,7 @@
-import { Leaf, Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
 import { TikTokIcon, ThreadsIcon } from "./icons";
+import Logo from "./logo";
 
 const productLinks = [
   { label: "KawaScan", href: "#kawascan" },
@@ -22,11 +23,8 @@ export default function SiteFooter() {
       <div className="container">
         <div className="top">
           <div>
-            <span className="brand">
-              <span className="mark">
-                <Leaf />
-              </span>
-              {siteConfig.name}
+            <span className="brand" aria-label={siteConfig.name}>
+              <Logo size={32} variant="dark" />
             </span>
             <p className="about">
               Digital solutions for coffee farmers and agriculture. Made with
