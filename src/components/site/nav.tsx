@@ -15,7 +15,7 @@ export default function SiteNav() {
     <header className="nav">
       <div className="container inner">
         <Link href="#top" className="brand" aria-label={siteConfig.name}>
-          <Logo size={34} />
+          <Logo height={30} />
         </Link>
         <nav className="links">
           {links.map((l) => (

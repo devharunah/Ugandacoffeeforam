@@ -1,42 +1,31 @@
 import Image from "next/image";
-import { siteConfig } from "@/src/lib/site-config";
 
 /**
- * Brand lockup: the app's leaf mark (shared symbol across KawaCoffee + KawaScan,
- * taken from the app icon) + the "KawaCoffee" wordmark. On dark surfaces the
- * wordmark switches to white.
+ * The Kawa wordmark logo (public/images/Kawa.png) — the brand's own logo.
+ * Intrinsic 190×49 (≈3.88:1); scale by height, width stays auto.
+ * On dark surfaces the black wordmark is rendered white via a filter.
  */
+const RATIO = 190 / 49;
+
 export default function Logo({
-  size = 34,
+  height = 30,
   variant = "light",
-  showText = true,
 }: {
-  size?: number;
+  height?: number;
   variant?: "light" | "dark";
-  showText?: boolean;
 }) {
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-      <Image
-        src="/images/kawa-mark.png"
-        alt={showText ? "" : siteConfig.name}
-        width={size}
-        height={size}
-        priority
-        style={{ display: "block", borderRadius: size * 0.26 }}
-      />
-      {showText && (
-        <span
-          style={{
-            fontWeight: 750,
-            fontSize: 19,
-            letterSpacing: "-0.02em",
-            color: variant === "dark" ? "var(--on-dark)" : "var(--ink)",
-          }}
-        >
-          {siteConfig.name}
-        </span>
-      )}
-    </span>
+    <Image
+      src="/images/Kawa.png"
+      alt="Kawa"
+      width={Math.round(height * RATIO)}
+      height={height}
+      priority
+      style={{
+        height,
+        width: "auto",
+        filter: variant === "dark" ? "brightness(0) invert(1)" : undefined,
+      }}
+    />
   );
 }

@@ -24,7 +24,7 @@ export default function SiteFooter() {
         <div className="top">
           <div>
             <span className="brand" aria-label={siteConfig.name}>
-              <Logo size={32} variant="dark" />
+              <Logo height={28} variant="dark" />
             </span>
             <p className="about">
               Digital solutions for coffee farmers and agriculture. Made with
