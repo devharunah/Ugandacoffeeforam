@@ -13,10 +13,9 @@ export const siteConfig = {
   /**
    * The Android APK download. This is the ONE place the download URL lives —
    * every "Get the app" / "Download for Android" button reads from here.
-   * TODO: replace with the final hosted APK URL once provided.
    */
   androidDownloadUrl:
-    "https://www.mediafire.com/file/um0py3j8tkpo1ns/Kawa.apk/file",
+    "https://www.mediafire.com/file/tkcgpc1u2bjbc9j/application-affd1f53-1481-4241-b96d-49f9094134e3.apk/file",
 
   /** iOS is on the roadmap; not available yet. */
   iosAvailable: false,
