@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KawaScan — Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;750&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="kawascan.css" />
+</head>
+<body>
+
+<!-- ============== ICON SPRITE ============== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="i-back"><path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 21c0-3 1.85-5.36 5.08-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-type"><path d="M5 7V5h14v2M12 5v14M9 19h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/></g>
+    <g id="i-clock"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-home"><path d="M3 10.5 12 3l9 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 9.5V20h14V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-user"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-globe"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" fill="none" stroke="currentColor" stroke-width="2"/></g>
+    <g id="i-volume"><path d="M11 5 6 9H3v6h3l5 4V5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-contrast"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor"/></g>
+    <g id="i-book"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></g>
+    <g id="i-info"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v5M12 7.6h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-chev"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-pin"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></g>
+    <g id="i-plus"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-wallet"><path d="M3 8a2 2 0 0 1 2-2h11v3M3 8v9a2 2 0 0 0 2 2h13a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="13" r="1.3" fill="currentColor"/></g>
+    <g id="i-check"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="i-lock"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-del"><path d="M21 5H8.5a2 2 0 0 0-1.5.7L2 12l5 6.3a2 2 0 0 0 1.5.7H21a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 9.5l-5 5M12 9.5l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-bug"><rect x="8" y="8" width="8" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12H4M16 12h4M8 16l-3 2M16 16l3 2M8 9 5 7M16 9l3-2M12 4v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="i-drop"><path d="M12 3s6 6.4 6 10.5A6 6 0 0 1 6 13.5C6 9.4 12 3 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></g>
+    <g id="i-signal"><rect x="2" y="11" width="3.4" height="5" rx="1" fill="currentColor"/><rect x="7" y="8.5" width="3.4" height="7.5" rx="1" fill="currentColor"/><rect x="12" y="6" width="3.4" height="10" rx="1" fill="currentColor"/><rect x="17" y="4" width="3.4" height="12" rx="1" fill="currentColor" opacity=".4"/></g>
+    <g id="i-batt"><rect x="2" y="7" width="18" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="9" width="11" height="6" rx="1" fill="currentColor"/><rect x="21" y="10" width="1.8" height="4" rx="1" fill="currentColor"/></g>
+  </defs>
+</svg>
+
+<!-- ============== TOP BAR ============== -->
+<div class="topbar">
+  <div class="brand"><b>KawaScan</b><span>redesign · 6 screens</span></div>
+  <div class="seg" role="tablist" aria-label="Direction">
+    <button data-dir="quiet" aria-pressed="true">Quiet</button>
+    <button data-dir="editorial" aria-pressed="false">Editorial</button>
+    <button data-dir="field" aria-pressed="false">Field</button>
+  </div>
+  <p class="dirnote" id="dirnote"><b>Quiet</b> — Linear-style. Light-gray app, white surfaces, hairline borders, tracked-caps labels. The disciplined baseline.</p>
+</div>
+
+<!-- ============== BOARD ============== -->
+<div class="board" data-theme="quiet">
+
+  <!-- ========== 1 · AUTH ========== -->
+  <figure class="device">
+    <figcaption><span class="cap-t">1 · Sign in</span><span class="cap-s">Top-anchored cluster — no dead space. Pill button, calm neutral input.</span></figcaption>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="sb-r"><svg><use href="#i-signal"/></svg><svg><use href="#i-batt"/></svg></span></div>
+      <div class="view">
+        <div class="auth">
+          <div class="back"><svg><use href="#i-back"/></svg></div>
+          <div class="cluster">
+            <div class="logo"><svg><use href="#i-leaf"/></svg></div>
+            <h1>Enter your phone number</h1>
+            <p class="sub">We use it to save your scans and free-scan balance.</p>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <div class="input"><span class="cc">+256</span><span class="num">700&nbsp;451&nbsp;208</span></div>
+            </div>
+            <div class="cta"><button class="btn btn-primary">Continue</button></div>
+            <p class="helper">No password needed. Phone verification comes later.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <!-- ========== 2 · HOME ========== -->
+  <figure class="device">
+    <figcaption><span class="cap-t">2 · Home</span><span class="cap-s">One heavy element (the CTA). Balance as an inline strip, problems as a borderless list.</span></figcaption>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="sb-r"><svg><use href="#i-signal"/></svg><svg><use href="#i-batt"/></svg></span></div>
+      <div class="view">
+        <div class="view-scroll">
+          <div class="home-head">
+            <h1>Hello, farmer</h1>
+            <div class="loc"><svg><use href="#i-pin"/></svg>Nakaseke</div>
+          </div>
+          <div class="scanstrip">
+            <div class="n"><b>3</b><span class="lab">scans left</span></div>
+            <button class="buy"><svg><use href="#i-wallet"/></svg>Buy more</button>
+          </div>
+          <div class="home-cta"><button class="btn btn-primary"><svg><use href="#i-camera"/></svg>Scan a plant</button></div>
+          <div class="home-sec">
+            <span class="eyebrow">Recent scans</span>
+            <div class="empty-quiet"><svg><use href="#i-clock"/></svg>Your scans will show up here.</div>
+          </div>
+          <div class="home-sec problems">
+            <span class="eyebrow">Common problems</span>
+            <div class="list">
+              <div class="row"><span class="icon-tile"><svg><use href="#i-leaf"/></svg></span><span class="label">Coffee Leaf Rust</span><svg class="chev"><use href="#i-chev"/></svg></div>
+              <div class="row"><span class="icon-tile"><svg><use href="#i-leaf"/></svg></span><span class="label">Coffee Berry Borer</span><svg class="chev"><use href="#i-chev"/></svg></div>
+              <div class="row"><span class="icon-tile"><svg><use href="#i-leaf"/></svg></span><span class="label">Cercospora (Brown Eye Spot)</span><svg class="chev"><use href="#i-chev"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <nav class="tabbar">
+          <div class="tab on"><svg><use href="#i-home"/></svg><span>Home</span></div>
+          <div class="tab"><svg><use href="#i-clock"/></svg><span>History</span></div>
+          <div class="tab-cam"><div class="cam-key"><svg><use href="#i-camera"/></svg></div></div>
+          <div class="tab"><svg><use href="#i-wallet"/></svg><span>Pay</span></div>
+          <div class="tab"><svg><use href="#i-user"/></svg><span>Account</span></div>
+        </nav>
+      </div>
+    </div>
+  </figure>
+
+  <!-- ========== 3 · HISTORY ========== -->
+  <figure class="device">
+    <figcaption><span class="cap-t">3 · History</span><span class="cap-s">Pill filter chips. Empty state is quiet, not a big bordered box.</span></figcaption>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="sb-r"><svg><use href="#i-signal"/></svg><svg><use href="#i-batt"/></svg></span></div>
+      <div class="view">
+        <div class="hist-head"><h1>Scan history</h1></div>
+        <div class="chips">
+          <button class="chip on">All</button>
+          <button class="chip">Leaf</button>
+          <button class="chip">Berry</button>
+          <button class="chip">Pests</button>
+        </div>
+        <div class="hist-empty">
+          <div class="ic"><svg><use href="#i-clock"/></svg></div>
+          <p>No scans yet. Tap the camera to diagnose your first plant.</p>
+        </div>
+        <nav class="tabbar">
+          <div class="tab"><svg><use href="#i-home"/></svg><span>Home</span></div>
+          <div class="tab on"><svg><use href="#i-clock"/></svg><span>History</span></div>
+          <div class="tab-cam"><div class="cam-key"><svg><use href="#i-camera"/></svg></div></div>
+          <div class="tab"><svg><use href="#i-wallet"/></svg><span>Pay</span></div>
+          <div class="tab"><svg><use href="#i-user"/></svg><span>Account</span></div>
+        </nav>
+      </div>
+    </div>
+  </figure>
+
+  <!-- ========== 4 · ACCOUNT ========== -->
+  <figure class="device">
+    <figcaption><span class="cap-t">4 · Account</span><span class="cap-s">Profile is a row, not a floating card. Settings grouped on one flat surface with dividers.</span></figcaption>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="sb-r"><svg><use href="#i-signal"/></svg><svg><use href="#i-batt"/></svg></span></div>
+      <div class="view">
+        <div class="view-scroll">
+          <div class="acct-head"><h1>Account</h1></div>
+          <div class="profile">
+            <span class="av"><svg><use href="#i-user"/></svg></span>
+            <span class="who"><b>0778&nbsp;895&nbsp;217</b><span>Nakaseke</span></span>
+            <span class="scans"><b>3</b><span>scans</span></span>
+          </div>
+          <div class="group">
+            <span class="eyebrow">Settings</span>
+            <div class="list">
+              <div class="row"><span class="icon-tile"><svg><use href="#i-globe"/></svg></span><span class="label">Language</span><span class="value">English <svg class="chev"><use href="#i-chev"/></svg></span></div>
+              <div class="row"><span class="icon-tile"><svg><use href="#i-type"/></svg></span><span class="label">Text size</span><span class="aseg"><button class="a1">A</button><button class="a2 on">A</button><button class="a3">A</button><button class="a4">A</button></span></div>
+              <div class="row"><span class="icon-tile"><svg><use href="#i-volume"/></svg></span><span class="label">Read aloud</span><span class="switch on"><i></i></span></div>
+              <div class="row"><span class="icon-tile"><svg><use href="#i-contrast"/></svg></span><span class="label">High contrast</span><span class="switch on"><i></i></span></div>
+            </div>
+          </div>
+          <div class="group">
+            <span class="eyebrow">About</span>
+            <div class="list">
+              <div class="row"><span class="icon-tile"><svg><use href="#i-book"/></svg></span><span class="label">How to use KawaScan</span><svg class="chev"><use href="#i-chev"/></svg></div>
+              <div class="row"><span class="icon-tile"><svg><use href="#i-info"/></svg></span><span class="label">About KawaScan</span><svg class="chev"><use href="#i-chev"/></svg></div>
+            </div>
+          </div>
+          <button class="signout">Sign out</button>
+          <p class="disclaimer">KawaScan is an information tool, not a licensed agronomist.</p>
+        </div>
+        <nav class="tabbar">
+          <div class="tab"><svg><use href="#i-home"/></svg><span>Home</span></div>
+          <div class="tab"><svg><use href="#i-clock"/></svg><span>History</span></div>
+          <div class="tab-cam"><div class="cam-key"><svg><use href="#i-camera"/></svg></div></div>
+          <div class="tab"><svg><use href="#i-wallet"/></svg><span>Pay</span></div>
+          <div class="tab on"><svg><use href="#i-user"/></svg><span>Account</span></div>
+        </nav>
+      </div>
+    </div>
+  </figure>
+
+  <!-- ========== 5 · PAY ========== -->
+  <figure class="device">
+    <figcaption><span class="cap-t">5 · Pay</span><span class="cap-s">Two flat selectable packs — basic vs premium. One clear price, honest fine print.</span></figcaption>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="sb-r"><svg><use href="#i-signal"/></svg><svg><use href="#i-batt"/></svg></span></div>
+      <div class="view">
+        <div class="view-scroll">
+          <div class="scr-head"><div class="back"><svg><use href="#i-back"/></svg></div><h1>Add scans</h1></div>
+          <p class="scr-sub">Pay with Mobile Money — no card or bank account needed.</p>
+          <div class="plans">
+            <button class="plan">
+              <span class="radio"><svg><use href="#i-check"/></svg></span>
+              <span class="pinfo">
+                <span class="pn"><b>Starter</b></span>
+                <span class="scans">10 scans · AI diagnosis</span>
+              </span>
+              <span class="price"><b>UGX&nbsp;2,000</b><span>one-time</span></span>
+            </button>
+            <button class="plan sel">
+              <span class="radio"><svg><use href="#i-check"/></svg></span>
+              <span class="pinfo">
+                <span class="pn"><b>Premium</b><span class="tag">Recommended</span></span>
+                <span class="scans">10 scans · expert-reviewed + offline guide</span>
+              </span>
+              <span class="price"><b>UGX&nbsp;5,000</b><span>one-time</span></span>
+            </button>
+          </div>
+          <div class="pay-foot">
+            <button class="btn btn-primary">Pay UGX&nbsp;5,000</button>
+            <p class="fineprint"><svg><use href="#i-lock"/></svg>You'll approve the payment on your phone.</p>
+          </div>
+        </div>
+        <nav class="tabbar">
+          <div class="tab"><svg><use href="#i-home"/></svg><span>Home</span></div>
+          <div class="tab"><svg><use href="#i-clock"/></svg><span>History</span></div>
+          <div class="tab-cam"><div class="cam-key"><svg><use href="#i-camera"/></svg></div></div>
+          <div class="tab on"><svg><use href="#i-wallet"/></svg><span>Pay</span></div>
+          <div class="tab"><svg><use href="#i-user"/></svg><span>Account</span></div>
+        </nav>
+      </div>
+    </div>
+  </figure>
+
+  <!-- ========== 6 · PROCESSING ========== -->
+  <figure class="device">
+    <figcaption><span class="cap-t">6 · Processing</span><span class="cap-s">One job: wait. Says exactly what's happening and where to approve.</span></figcaption>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="sb-r"><svg><use href="#i-signal"/></svg><svg><use href="#i-batt"/></svg></span></div>
+      <div class="view">
+        <div class="proc">
+          <div class="spinner"></div>
+          <h2>Confirming payment…</h2>
+          <p>We sent a request to <b>+256&nbsp;778&nbsp;895&nbsp;217</b>. Approve the Mobile Money prompt on your phone to add your scans.</p>
+          <div class="wait-amt">Premium · 10 scans · UGX&nbsp;5,000</div>
+          <button class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+</div>
+
+<script>
+  var notes = {
+    quiet: "<b>Quiet</b> — Linear-style. Light-gray app, white surfaces, hairline borders, tracked-caps labels. The disciplined baseline.",
+    editorial: "<b>Editorial</b> — Notion-style. White app, grouped lists on a soft tint, monospace micro-labels. Hierarchy carried by type, not chrome.",
+    field: "<b>Field</b> — High contrast & larger type for outdoor / low-literacy readability. Bigger tap targets, heavier ink."
+  };
+  var board = document.querySelector('.board');
+  var note = document.getElementById('dirnote');
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true');
+      board.setAttribute('data-theme', b.dataset.dir);
+      note.innerHTML = notes[b.dataset.dir];
+    });
+  });
+</script>
+</body>
+</html>

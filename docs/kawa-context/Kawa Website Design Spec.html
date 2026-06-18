@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kawa Website — Design Spec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;750;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="spec.css" />
+<link rel="stylesheet" href="kawasite.css" />
+<style>
+  /* keep kawasite.css from overriding the doc shell */
+  body { background: var(--page-bg); }
+  main section { padding: 52px 0; }
+  /* demo helpers */
+  .demo-dark { background: #0E1311 !important; border-radius: 12px; }
+  .demo-soft { background: #F6F8F7 !important; }
+  .web-eyebrow-demo { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .mini-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
+  .spec .demo .scard, .spec .demo .scard.tonal { margin: 0; }
+  .fontline { font-family: "Inter"; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="d-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 21c0-3 1.85-5.36 5.08-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="d-scan"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></g>
+  <g id="d-store"><path d="M4 9h16l-1-4H5L4 9Zm0 0v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="d-arrow"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="d-plus"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+  <g id="d-play"><path d="M8 5v14l11-7-11-7Z" fill="currentColor"/></g>
+</defs></svg>
+
+<div class="wrap">
+
+<!-- ============ TOC ============ -->
+<nav class="toc">
+  <div class="lede">Kawa Website Design Spec</div>
+  <div class="v">v1.0 · AI / engineering context</div>
+  <div class="grp">Overview</div>
+  <a href="#about">What this is</a>
+  <a href="#provenance">Component provenance</a>
+  <a href="#principles">Principles</a>
+  <div class="grp">Foundations</div>
+  <a href="#color">Color</a>
+  <a href="#type">Typography</a>
+  <a href="#space">Spacing &amp; layout</a>
+  <a href="#radius">Radius &amp; elevation</a>
+  <div class="grp">Components</div>
+  <a href="#c-button">Buttons</a>
+  <a href="#c-eyebrow">Eyebrow</a>
+  <a href="#c-card">Solution cards</a>
+  <a href="#c-faq">FAQ</a>
+  <a href="#c-bands">Bands</a>
+  <a href="#c-phone">Phone mockup</a>
+  <div class="grp">Page</div>
+  <a href="#structure">Page structure</a>
+  <a href="#responsive">Responsive</a>
+  <a href="#dodont">Do &amp; don't</a>
+  <a href="#files">Files</a>
+</nav>
+
+<main>
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <div class="eyebrow-doc">Website Design Specification</div>
+    <h1>Kawa Marketing Site</h1>
+    <p class="tagline">A living, visual reference for how the Kawa website is built — tokens, type, and components shown as real, rendered examples. Hand this to an AI or a developer as context so new work matches the existing design exactly. Pairs with the app spec (<code class="ic">KawaScan Design Spec.html</code>).</p>
+    <div class="meta-grid">
+      <div class="m"><b>Surface</b><span>Marketing website</span></div>
+      <div class="m"><b>Files</b><span>Kawa Website.html · kawasite.css</span></div>
+      <div class="m"><b>Type</b><span>Inter (400–800)</span></div>
+      <div class="m"><b>Accent</b><span>#15683C</span></div>
+      <div class="m"><b>Character</b><span>Bold · high-contrast · editorial</span></div>
+      <div class="m"><b>Components from</b><span>Sanity UI + Material You</span></div>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="sec-num">00</div>
+    <h2>What this is</h2>
+    <p class="sec-intro">Kawa is positioned as a company building <strong>digital solutions for coffee farmers and agriculture</strong> — not a coffee marketplace. The marketplace is now one solution among several; <strong>KawaScan</strong> is the flagship app. The site must read as a confident software brand: bold display type, high-contrast bands, one disciplined green, and product shown through faithful phone mockups.</p>
+    <div class="callout"><b>How to use this doc.</b><p>Every component below is rendered with the real <code class="ic">kawasite.css</code>, so what you see is what ships. When extending the site, copy these patterns and tokens rather than inventing new ones.</p></div>
+  </section>
+
+  <!-- ============ PROVENANCE ============ -->
+  <section id="provenance">
+    <div class="sec-num">01</div>
+    <h2>Component provenance — the anti-generic rule</h2>
+    <p class="sec-intro">To stop the UI drifting into generic, arbitrary "AI-looking" components, <strong>every component is modeled on a documented pattern from one of two open UI libraries</strong>, then re-skinned in Kawa tokens. We adopt structure and interaction patterns only — never any company's proprietary branding, fonts, icons, or assets, and we never clone a product.</p>
+    <div class="principles">
+      <div class="principle"><div class="pi">Sanity UI</div><b>Flat &amp; editorial</b><p>Flat surfaces, hairline 1px borders, restrained neutrals, generous whitespace, monospace micro-labels. Drives: solution cards, FAQ, footer, section scaffolding, eyebrows.</p></div>
+      <div class="principle"><div class="pi">Material You</div><b>Tonal &amp; pill</b><p>Pill / full-radius buttons, tonal (tinted) containers, 13–16px container radius, lifted FAB. Drives: all buttons, the tonal lead card, badges, rounded stage panels, the phone's camera key.</p></div>
+    </div>
+    <h4>Enforcement rules</h4>
+    <ul class="ticks">
+      <li>A new component <b>must</b> map to a pattern in Sanity UI or Material You. If it maps to neither, don't invent — compose from existing patterns.</li>
+      <li><b>Re-skin only:</b> structure/behavior from the library; color, radius, type, spacing from Kawa tokens.</li>
+      <li>One governing library <b>per component</b> — never blend the two inside a single element.</li>
+      <li>No third-party brand assets. Icons are Kawa's own line set; the only font is Inter.</li>
+    </ul>
+  </section>
+
+  <!-- ============ PRINCIPLES ============ -->
+  <section id="principles">
+    <div class="sec-num">02</div>
+    <h2>Principles</h2>
+    <div class="principles">
+      <div class="principle"><div class="pi">01</div><b>Bold, high-contrast</b><p>Alternating white and near-black <code class="ic">#0E1311</code> bands. Big, tightly-tracked Inter display type is the primary brand device.</p></div>
+      <div class="principle"><div class="pi">02</div><b>One disciplined green</b><p>The same <code class="ic">#15683C</code> as the app. Accent only — actions, links, the lead card. On dark, switch to <code class="ic">--accent-bright</code>.</p></div>
+      <div class="principle"><div class="pi">03</div><b>Flat, hairline-defined</b><p>No drop shadows on content. Cards, FAQ and bands separate via hairlines and tint. Only device bezels carry shadow.</p></div>
+      <div class="principle"><div class="pi">04</div><b>Product shown natively</b><p>KawaScan appears as faithful CSS phone mockups, not screenshots — crisp at any zoom, one language with the app.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section id="color">
+    <div class="sec-num">03</div>
+    <h2>Color</h2>
+    <p class="sec-intro">A bold ink ramp on white, a single green accent, and a near-black band color for contrast rhythm. All values are CSS custom properties in <code class="ic">:root</code>.</p>
+
+    <h3>Brand &amp; accent</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#15683C"></div><div class="meta"><b>Accent</b><code>#15683C</code><span>--accent · actions, links</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#0F5430"></div><div class="meta"><b>Accent press</b><code>#0F5430</code><span>--accent-press · hover</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#2FA968"></div><div class="meta"><b>Accent bright</b><code>#2FA968</code><span>--accent-bright · green on dark</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#E9F1EC"></div><div class="meta"><b>Tint</b><code>#E9F1EC</code><span>--tint · Material tonal fill</span></div></div>
+    </div>
+
+    <h3>Ink, surfaces &amp; dark band</h3>
+    <table class="tbl">
+      <thead><tr><th style="width:230px">Token</th><th style="width:130px">Value</th><th></th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td class="tok">--ink</td><td class="val"><div class="swrow"><span class="sw" style="background:#0E1311"></span>#0E1311</div></td><td></td><td class="desc">Headlines, body — high contrast</td></tr>
+        <tr><td class="tok">--muted</td><td class="val"><div class="swrow"><span class="sw" style="background:#51585B"></span>#51585B</div></td><td></td><td class="desc">Secondary text, leads</td></tr>
+        <tr><td class="tok">--faint</td><td class="val"><div class="swrow"><span class="sw" style="background:#8A9094"></span>#8A9094</div></td><td></td><td class="desc">Captions, idle</td></tr>
+        <tr><td class="tok">--line / --line-strong</td><td class="val"><div class="swrow"><span class="sw" style="background:#E4E7E6"></span>#E4E7E6 / #D3D7D6</div></td><td></td><td class="desc">Hairlines / control borders</td></tr>
+        <tr><td class="tok">--bg / --bg-soft</td><td class="val"><div class="swrow"><span class="sw" style="background:#F6F8F7"></span>#FFFFFF / #F6F8F7</div></td><td></td><td class="desc">Page / alternate band</td></tr>
+        <tr><td class="tok">--dark</td><td class="val"><div class="swrow"><span class="sw" style="background:#0E1311"></span>#0E1311</div></td><td></td><td class="desc">Contrast bands, footer</td></tr>
+        <tr><td class="tok">--on-dark-muted</td><td class="val"><div class="swrow"><span class="sw" style="background:#A7AFAC"></span>#A7AFAC</div></td><td></td><td class="desc">Secondary text on dark</td></tr>
+        <tr><td class="tok">--on-dark-line</td><td class="val"><div class="swrow"><span class="sw" style="background:#283230"></span>#283230</div></td><td></td><td class="desc">Hairlines on dark</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn"><b>High-contrast mandate.</b><p>Green on a dark band uses <code class="ic">--accent-bright</code> (#2FA968) for legibility. <strong>Never</strong> use <code class="ic">--accent</code> (#15683C) as text on <code class="ic">--dark</code>.</p></div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section id="type">
+    <div class="sec-num">04</div>
+    <h2>Typography</h2>
+    <p class="sec-intro">One family — <strong>Inter</strong>, weights 400–800 — loaded from Google Fonts (self-host for production). Bold, tightly-tracked display type is the brand's signature. Eyebrows are the one monospace element.</p>
+
+    <div class="type-row"><div class="sample fontline" style="font-size:46px;font-weight:750;letter-spacing:-0.035em;line-height:1">Software for the people who grow coffee.</div><div class="specs">Hero H1 / clamp 46–78px · 750 · −0.035em</div></div>
+    <div class="type-row"><div class="sample fontline" style="font-size:40px;font-weight:700;letter-spacing:-0.027em">One toolkit for the coffee value chain.</div><div class="specs">Section H2 / clamp 32–46px · 700</div></div>
+    <div class="type-row"><div class="sample fontline" style="font-size:34px;font-weight:700;letter-spacing:-0.03em">We build digital solutions.</div><div class="specs">Band statement / clamp 34–58px · 700</div></div>
+    <div class="type-row"><div class="sample fontline" style="font-size:20px;color:#51585B">Kawa builds simple, reliable apps for farmers.</div><div class="specs">Lead / 18–20px · 400 · muted</div></div>
+    <div class="type-row"><div class="sample fontline" style="font-size:21px;font-weight:700;letter-spacing:-0.02em">KawaScan</div><div class="specs">Card title / 19–21px · 700 · −0.02em</div></div>
+    <div class="type-row"><div class="sample fontline" style="font-size:15px;color:#51585B">Point your phone at a leaf and get an instant diagnosis.</div><div class="specs">Body / 14.5–15.5px · 400</div></div>
+    <div class="type-row"><div class="sample" style="font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#15683C">What we build</div><div class="specs">Eyebrow / 12.5px MONO · +0.12em</div></div>
+    <div class="type-row"><div class="sample fontline" style="font-size:56px;font-weight:800;letter-spacing:-0.04em;color:#D5E7DC">01</div><div class="specs">Step numeral / 56px · 800 · --tint-deep</div></div>
+
+    <h3>Font loading</h3>
+    <pre><span class="c">&lt;!-- weights actually used: 400 500 550 600 650 700 750 800 --&gt;</span>
+&lt;link href=<span class="v">"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;750;800&amp;display=swap"</span> rel=<span class="k">"stylesheet"</span>&gt;
+
+<span class="c">/* eyebrows only — no web font needed */</span>
+--mono: ui-monospace, <span class="v">"SF Mono"</span>, <span class="v">"JetBrains Mono"</span>, monospace;</pre>
+    <p class="note">Production: self-host Inter as woff2 with <code class="ic">font-display: swap</code> and drop the Google link.</p>
+  </section>
+
+  <!-- ============ SPACING ============ -->
+  <section id="space">
+    <div class="sec-num">05</div>
+    <h2>Spacing &amp; layout</h2>
+    <div class="kv">
+      <dt>Container</dt><dd>max-width 1200px (<code class="ic">--maxw</code>), centered</dd>
+      <dt>Gutter</dt><dd>40px (<code class="ic">--gut</code>); 22px at ≤720px</dd>
+      <dt>Section rhythm</dt><dd>104px vertical; 72px at ≤720px</dd>
+      <dt>Grid gaps</dt><dd>cards 18px · hero columns 56px · flagship 60px</dd>
+      <dt>Layout primitive</dt><dd>flex / grid with <code class="ic">gap</code> everywhere — never inline-block + whitespace</dd>
+    </div>
+    <div class="callout"><b>Contrast rhythm.</b><p>The page deliberately alternates surfaces: white hero → dark mission band → white solutions → soft flagship → photo → white steps → white FAQ → green CTA → dark footer. This banding is the layout's backbone.</p></div>
+  </section>
+
+  <!-- ============ RADIUS ============ -->
+  <section id="radius">
+    <div class="sec-num">06</div>
+    <h2>Radius &amp; elevation</h2>
+    <table class="tbl">
+      <thead><tr><th style="width:200px">Token</th><th style="width:120px">Value</th><th>Applies to</th></tr></thead>
+      <tbody>
+        <tr><td class="tok">--r-pill</td><td class="val">999px</td><td class="desc">Buttons, badges, tags (Material You)</td></tr>
+        <tr><td class="tok">--r-card</td><td class="val">16px</td><td class="desc">Solution / step cards, banners</td></tr>
+        <tr><td class="tok">--r-tile</td><td class="val">13px</td><td class="desc">Icon tiles</td></tr>
+        <tr><td class="tok">--r-sm</td><td class="val">10px</td><td class="desc">Small insets</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn"><b>Elevation.</b><p>No <code class="ic">box-shadow</code> on cards, FAQ, or bands. The <strong>only</strong> shadow on the web layer is the phone-mockup device bezel (it's chrome, not content). Separation everywhere else is a hairline or a tint.</p></div>
+  </section>
+
+  <!-- ============ BUTTONS ============ -->
+  <section id="c-button">
+    <div class="sec-num">07</div>
+    <h2>Buttons <span style="font-size:14px;color:var(--faint);font-weight:500">· Material You pill</span></h2>
+    <div class="spec">
+      <div class="demo">
+        <a class="wbtn wbtn-primary"><svg><use href="#d-play"/></svg>Get KawaScan</a>
+        <a class="wbtn wbtn-ghost">See what we build</a>
+        <a class="wbtn wbtn-primary sm">Get the app</a>
+      </div>
+      <div class="demo demo-dark">
+        <a class="wbtn wbtn-on-dark"><svg><use href="#d-play"/></svg>Download for Android</a>
+        <a class="wbtn wbtn-dark-ghost">Talk to the team</a>
+      </div>
+      <div class="body">
+        <div class="kv">
+          <dt>Height</dt><dd>50px (42px <code class="ic">.sm</code>), pill radius, 600 weight</dd>
+          <dt>Variants</dt><dd><code class="ic">-primary</code> green · <code class="ic">-ghost</code> outline · <code class="ic">-on-dark</code> white · <code class="ic">-dark-ghost</code> outline-on-dark</dd>
+          <dt>Press</dt><dd><code class="ic">translateY(1px)</code></dd>
+          <dt>Rule</dt><dd>one primary per region; icons 18px, leading, 9px gap</dd>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EYEBROW ============ -->
+  <section id="c-eyebrow">
+    <div class="sec-num">08</div>
+    <h2>Eyebrow <span style="font-size:14px;color:var(--faint);font-weight:500">· Sanity editorial label</span></h2>
+    <div class="spec">
+      <div class="demo web-eyebrow-demo">
+        <span class="eyebrow">What we build</span>
+        <span class="eyebrow">Flagship · KawaScan</span>
+      </div>
+      <div class="demo demo-dark web-eyebrow-demo">
+        <span class="eyebrow on-dark">Our mission</span>
+      </div>
+      <div class="body">
+        <div class="kv">
+          <dt>Type</dt><dd>12.5px mono, +0.12em, UPPERCASE, accent</dd>
+          <dt>Rule</dt><dd>22px leading line via <code class="ic">::before</code></dd>
+          <dt>Modifiers</dt><dd><code class="ic">.on-dark</code> → --accent-bright · <code class="ic">.plain</code> drops the rule</dd>
+          <dt>Usage</dt><dd>opens every section</dd>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARDS ============ -->
+  <section id="c-card">
+    <div class="sec-num">09</div>
+    <h2>Solution cards <span style="font-size:14px;color:var(--faint);font-weight:500">· Sanity flat + Material tonal</span></h2>
+    <div class="spec">
+      <div class="demo demo-soft">
+        <div class="mini-card-grid">
+          <article class="scard tonal" style="margin:0">
+            <span class="tile"><svg><use href="#d-scan"/></svg></span>
+            <div class="flag">Flagship app</div>
+            <h3>KawaScan</h3>
+            <p>Point your phone at a leaf and get an instant diagnosis, even with no signal.</p>
+            <a class="go">Explore KawaScan <svg><use href="#d-arrow"/></svg></a>
+          </article>
+          <article class="scard" style="margin:0">
+            <span class="tile"><svg><use href="#d-store"/></svg></span>
+            <div class="flag">Marketplace</div>
+            <h3>Kawa Market</h3>
+            <p>Post your coffee, set prices, and connect directly with roasters and buyers.</p>
+            <a class="go">Start selling <svg><use href="#d-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+      <div class="body">
+        <div class="kv">
+          <dt>Flat — <code class="ic">.scard</code></dt><dd>white, 1px --line, 16px radius, hover lifts 3px + border darkens</dd>
+          <dt>Tonal — <code class="ic">.scard.tonal</code></dt><dd>--tint fill, no border. Reserved for the lead (KawaScan) card only</dd>
+          <dt>Anatomy</dt><dd>icon tile (46px, accent) → mono flag → title (21/700) → body → arrow link</dd>
+        </div>
+        <p class="note">One tonal card per grid, as the lead. The arrow nudges 3px on hover.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="c-faq">
+    <div class="sec-num">10</div>
+    <h2>FAQ <span style="font-size:14px;color:var(--faint);font-weight:500">· Sanity flat disclosure</span></h2>
+    <div class="spec">
+      <div class="demo col" style="background:#fff">
+        <div class="faq" style="width:100%">
+          <div class="list" style="border-top:1px solid var(--line)">
+            <details open><summary>What is Kawa?<span class="pm"><svg><use href="#d-plus"/></svg></span></summary><div class="ans">Kawa builds digital tools for coffee farmers — KawaScan diagnoses disease from a photo, plus a marketplace and agronomy guide.</div></details>
+            <details><summary>How much does it cost?<span class="pm"><svg><use href="#d-plus"/></svg></span></summary><div class="ans">Getting started is free.</div></details>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="kv">
+          <dt>Mechanism</dt><dd>native <code class="ic">&lt;details&gt;</code> — keyboard + SR accessible, no JS</dd>
+          <dt>Summary</dt><dd>18px · 600; hairline divider per item</dd>
+          <dt>Marker</dt><dd>circular <code class="ic">+</code> rotates 45° and fills accent on <code class="ic">[open]</code></dd>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANDS ============ -->
+  <section id="c-bands">
+    <div class="sec-num">11</div>
+    <h2>Bands</h2>
+    <ul class="ticks">
+      <li><b>Dark reposition band</b> — the mission statement on <code class="ic">--dark</code>; big statement with an <code class="ic">--accent-bright</code> highlight + 3 mono-numbered columns.</li>
+      <li><b>Field photo banner</b> — full-width <code class="ic">&lt;image-slot&gt;</code> (user-fillable) with a bottom gradient scrim and overlaid statement. The one large photographic moment; overlay is <code class="ic">pointer-events:none</code>.</li>
+      <li><b>CTA band</b> — solid <code class="ic">--accent</code>, white type, stacked white / ghost buttons.</li>
+      <li><b>Footer</b> — <code class="ic">--dark</code>; 4-col → 2-col → 1-col, Kawa line icons for socials.</li>
+    </ul>
+    <div class="callout"><p>Imagery enters only through <code class="ic">&lt;image-slot&gt;</code> placeholders (drag-and-drop, persists). Product is shown via the phone mockup, never screenshots.</p></div>
+  </section>
+
+  <!-- ============ PHONE ============ -->
+  <section id="c-phone">
+    <div class="sec-num">12</div>
+    <h2>Phone mockup</h2>
+    <p class="sec-intro">A faithful, <strong>scoped</strong> re-skin of the real KawaScan screens (bold theme), namespaced under <code class="ic">.phone</code> so it never collides with the app's <code class="ic">kawascan.css</code>. Used in the hero (Home) and flagship (Home + Pay, overlapped).</p>
+    <div class="kv">
+      <dt>Bezel</dt><dd>#0E1311, 40px frame radius, 9px padding</dd>
+      <dt>Shadow</dt><dd>the single permitted web-layer shadow (device chrome)</dd>
+      <dt>Screen</dt><dd>300px wide, 600px tall, the app's real components at bold-theme tokens</dd>
+      <dt>Source of truth</dt><dd>mirrors <code class="ic">KawaScan Redesign.html</code>; static PNG renders live in <code class="ic">assets/mockups/</code></dd>
+    </div>
+  </section>
+
+  <!-- ============ STRUCTURE ============ -->
+  <section id="structure">
+    <div class="sec-num">13</div>
+    <h2>Page structure</h2>
+    <p class="sec-intro">Narrative order: who we are now → what we build → the flagship → proof + human → how to act → convert.</p>
+    <ul class="ticks">
+      <li><b>Nav</b> — sticky, blurred, hairline bottom.</li>
+      <li><b>Hero</b> — 2-col: bold headline + lead + CTAs + trust stats / KawaScan Home phone on a tonal stage.</li>
+      <li><b>Reposition band</b> (dark) — mission, 3 numbered columns.</li>
+      <li><b>Solutions</b> — 3 cards; KawaScan tonal lead, Market, Agronomy guide.</li>
+      <li><b>Flagship spotlight</b> — feature list + two overlapped phones (Home + Pay).</li>
+      <li><b>Field photo banner</b> — image slot + overlaid statement.</li>
+      <li><b>How it works</b> — 3 steps (Scan · Diagnose · Act).</li>
+      <li><b>FAQ</b> — 2-col, flat disclosure list.</li>
+      <li><b>CTA band</b> (green) → <b>Footer</b> (dark).</li>
+    </ul>
+  </section>
+
+  <!-- ============ RESPONSIVE ============ -->
+  <section id="responsive">
+    <div class="sec-num">14</div>
+    <h2>Responsive</h2>
+    <table class="tbl">
+      <thead><tr><th style="width:160px">Breakpoint</th><th>Changes</th></tr></thead>
+      <tbody>
+        <tr><td class="tok">≤1000px</td><td class="desc">Hero / flagship / FAQ / CTA → 1 column. Card grids → 1 column. Second flagship phone appears.</td></tr>
+        <tr><td class="tok">≤720px</td><td class="desc">Gutter 22px, rhythm 72px. Nav links hidden. Second flagship phone hidden. Footer → 1 column.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">All display sizes are fluid via <code class="ic">clamp()</code>; test at 1280 / 1000 / 720 / 390.</p>
+  </section>
+
+  <!-- ============ DO / DON'T ============ -->
+  <section id="dodont">
+    <div class="sec-num">15</div>
+    <h2>Do &amp; don't</h2>
+    <div class="dd">
+      <div class="col do">
+        <div class="hd">Do</div>
+        <ul>
+          <li>Map every component to Sanity UI or Material You, re-skinned in tokens.</li>
+          <li>Open each section with the mono eyebrow + rule.</li>
+          <li>Keep one tonal (green) card per grid, as the lead.</li>
+          <li>Alternate white and dark bands for contrast rhythm.</li>
+          <li>Use <code class="ic">--accent-bright</code> for green on dark.</li>
+          <li>Show the product via the phone mockup.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <div class="hd">Don't</div>
+        <ul>
+          <li>Invent a component that maps to neither library.</li>
+          <li>Hard-code hex in component CSS — use tokens.</li>
+          <li>Use <code class="ic">--accent</code> as text on the dark band.</li>
+          <li>Put drop shadows on cards, FAQ, or bands.</li>
+          <li>Reintroduce "coffee marketplace" as the headline identity.</li>
+          <li>Pull in third-party brand assets, icons, or fonts.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FILES ============ -->
+  <section id="files">
+    <div class="sec-num">16</div>
+    <h2>Files &amp; companions</h2>
+    <div class="kv">
+      <dt>Kawa Website.html</dt><dd>the page</dd>
+      <dt>kawasite.css</dt><dd>design system + components (all tokens in <code class="ic">:root</code>)</dd>
+      <dt>image-slot.js</dt><dd>user-fillable photo placeholders</dd>
+      <dt>assets/mockups/</dt><dd>6 KawaScan screen PNGs</dd>
+      <dt>Kawa Web Design Spec.md</dt><dd>visual system + provenance (markdown)</dd>
+      <dt>Kawa Website Tech Spec.md</dt><dd>implementation guide (markdown)</dd>
+      <dt>KawaScan Design Spec.html</dt><dd>the app's component spec</dd>
+    </div>
+    <div class="callout"><b>Keep in lockstep.</b><p>This doc renders the live <code class="ic">kawasite.css</code>. If you change a token or component there, this page updates automatically — re-read it before extending the site.</p></div>
+  </section>
+
+</main>
+</div>
+</body>
+</html>

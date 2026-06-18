@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kawa — Digital tools for coffee farmers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;750;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="kawasite.css" />
+<script src="image-slot.js"></script>
+</head>
+<body>
+
+<!-- ============== ICON SPRITE ============== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="w-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 21c0-3 1.85-5.36 5.08-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/></g>
+  <g id="w-wallet"><path d="M3 8a2 2 0 0 1 2-2h11v3M3 8v9a2 2 0 0 0 2 2h13a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="13" r="1.3" fill="currentColor"/></g>
+  <g id="w-chev"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-arrow"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-plus"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+  <g id="w-check"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-clock"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-home"><path d="M3 10.5 12 3l9 7.5M5 9.5V20h14V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-user"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+  <g id="w-scan"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></g>
+  <g id="w-store"><path d="M4 9h16l-1-4H5L4 9Zm0 0v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-book"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5ZM4 20.5A2.5 2.5 0 0 1 6.5 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></g>
+  <g id="w-bolt"><path d="M13 3 4 14h6l-1 7 9-11h-6l1-7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="w-volume"><path d="M11 5 6 9H3v6h3l5 4V5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+  <g id="w-pin"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></g>
+  <g id="w-bug"><rect x="8" y="8" width="8" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12H4M16 12h4M8 16l-3 2M16 16l3 2M8 9 5 7M16 9l3-2M12 4v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+  <g id="w-drop"><path d="M12 3s6 6.4 6 10.5A6 6 0 0 1 6 13.5C6 9.4 12 3 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></g>
+  <g id="w-play"><path d="M8 5v14l11-7-11-7Z" fill="currentColor"/></g>
+  <g id="w-in"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></g>
+  <g id="w-ig"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1" fill="currentColor"/></g>
+  <g id="w-tt"><path d="M15 4c.5 2.5 2 4 4.5 4.3v3.2c-1.7 0-3.3-.5-4.5-1.4v5.6a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.3a2.4 2.4 0 1 0 1.7 2.3V4H15Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></g>
+  <g id="w-th"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 13.5c0 2 1.6 3 3.5 3 2.4 0 3.6-1.4 3.6-4.2 0-3-1.7-4.3-3.8-4.3-1.6 0-2.8.8-2.8 2.2 0 1.2.9 1.8 1.9 1.8 1.3 0 2-1 2-2.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></g>
+</defs></svg>
+
+<!-- ============== NAV ============== -->
+<header class="nav">
+  <div class="container inner">
+    <a href="#" class="brand"><span class="mark"><svg><use href="#w-leaf"/></svg></span>Kawa</a>
+    <nav class="links">
+      <a href="#solutions">Solutions</a>
+      <a href="#kawascan">KawaScan</a>
+      <a href="#farmers">For farmers</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="right">
+      <a href="#" class="signin">Sign in</a>
+      <a href="#get" class="wbtn wbtn-primary sm">Get the app</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="container grid">
+    <div class="copy">
+      <span class="eyebrow">Digital tools for coffee farmers</span>
+      <h1>Software for the people who <em>grow coffee.</em></h1>
+      <p class="lead">Kawa builds simple, reliable apps for coffee farmers and agriculture across East Africa — starting with KawaScan, the app that diagnoses plant disease from a single photo.</p>
+      <div class="cta">
+        <a href="#get" class="wbtn wbtn-primary"><svg><use href="#w-play"/></svg>Get KawaScan for Android</a>
+        <a href="#solutions" class="wbtn wbtn-ghost">See what we build</a>
+      </div>
+      <div class="trust">
+        <div class="t"><b>Uganda</b><span>Built for East African farms</span></div>
+        <div class="div"></div>
+        <div class="t"><b>Free</b><span>Start scanning at no cost</span></div>
+        <div class="div"></div>
+        <div class="t"><b>Offline</b><span>Works in the field</span></div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="badge"><span class="dot"><svg><use href="#w-leaf"/></svg></span>Diagnosing Coffee Leaf Rust…</div>
+      <!-- KawaScan Home (scoped phone mockup) -->
+      <div class="phone">
+        <div class="screen">
+          <div class="sb"><span>9:41</span><span class="r"><i></i><i></i></span></div>
+          <div class="pv">
+            <div class="ph-head">
+              <h3>Hello, farmer</h3>
+              <div class="loc"><b></b>Nakaseke</div>
+            </div>
+            <div class="strip">
+              <div class="n"><b>3</b><span>scans left</span></div>
+              <a class="buy"><svg><use href="#w-wallet"/></svg>Buy more</a>
+            </div>
+            <div class="cta"><button class="pbtn"><svg><use href="#w-camera"/></svg>Scan a plant</button></div>
+            <div class="ph-sec">
+              <div class="ph-eye">Common problems</div>
+              <div class="plist">
+                <div class="prow"><span class="tile"><svg><use href="#w-leaf"/></svg></span><span class="lbl">Coffee Leaf Rust</span><svg class="chev"><use href="#w-chev"/></svg></div>
+                <div class="prow"><span class="tile"><svg><use href="#w-leaf"/></svg></span><span class="lbl">Coffee Berry Borer</span><svg class="chev"><use href="#w-chev"/></svg></div>
+                <div class="prow"><span class="tile"><svg><use href="#w-leaf"/></svg></span><span class="lbl">Brown Eye Spot</span><svg class="chev"><use href="#w-chev"/></svg></div>
+              </div>
+            </div>
+            <div style="flex:1"></div>
+            <div class="tabbar">
+              <div class="tab on"><svg><use href="#w-home"/></svg><span>Home</span></div>
+              <div class="tab"><svg><use href="#w-clock"/></svg><span>History</span></div>
+              <div style="display:grid;place-items:center"><div class="camkey"><svg><use href="#w-camera"/></svg></div></div>
+              <div class="tab"><svg><use href="#w-wallet"/></svg><span>Pay</span></div>
+              <div class="tab"><svg><use href="#w-user"/></svg><span>Account</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== REPOSITION BAND ============== -->
+<section class="band-dark reposition">
+  <div class="container">
+    <span class="eyebrow on-dark">Our mission</span>
+    <p class="big">Kawa is no longer just a marketplace. <span class="hl">We build digital solutions for the people who grow coffee — and the farms they depend on.</span></p>
+    <div class="cols">
+      <div class="col">
+        <div class="k">01 — Diagnose</div>
+        <h4>Catch disease early</h4>
+        <p>Farmers lose harvests to disease they spot too late. KawaScan turns any phone camera into a field diagnosis tool.</p>
+      </div>
+      <div class="col">
+        <div class="k">02 — Trade</div>
+        <h4>Sell coffee directly</h4>
+        <p>Our marketplace still connects farmers, cafés and buyers — now as one part of a wider toolkit, not the whole story.</p>
+      </div>
+      <div class="col">
+        <div class="k">03 — Grow</div>
+        <h4>Learn what works</h4>
+        <p>Plain-language guidance and an offline disease library, written for the realities of smallholder farming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SOLUTIONS ============== -->
+<section class="solutions" id="solutions">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">What we build</span>
+      <h2>One toolkit for the coffee value chain.</h2>
+      <p>Each Kawa product solves a real problem farmers told us about. They share one account, one design language, and work on the phones people already own.</p>
+    </div>
+    <div class="grid">
+      <article class="scard tonal">
+        <span class="tile"><svg><use href="#w-scan"/></svg></span>
+        <div class="flag">Flagship app</div>
+        <h3>KawaScan</h3>
+        <p>Point your phone at a leaf and get an instant diagnosis, severity, and a treatment plan — even with no signal.</p>
+        <a href="#kawascan" class="go">Explore KawaScan <svg><use href="#w-arrow"/></svg></a>
+      </article>
+      <article class="scard">
+        <span class="tile"><svg><use href="#w-store"/></svg></span>
+        <div class="flag">Marketplace</div>
+        <h3>Kawa Market</h3>
+        <p>Post your coffee and products online, set your prices, and connect directly with roasters and buyers — no middlemen.</p>
+        <a href="#get" class="go">Start selling <svg><use href="#w-arrow"/></svg></a>
+      </article>
+      <article class="scard">
+        <span class="tile"><svg><use href="#w-book"/></svg></span>
+        <div class="flag">Knowledge</div>
+        <h3>Agronomy guide</h3>
+        <p>An offline library of coffee diseases and good practices, with read-aloud support in local languages.</p>
+        <a href="#farmers" class="go">Browse the guide <svg><use href="#w-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FLAGSHIP SPOTLIGHT ============== -->
+<section class="flagship" id="kawascan">
+  <div class="container grid">
+    <div class="copy">
+      <span class="eyebrow">Flagship · KawaScan</span>
+      <h2>Point your phone at a leaf. Know what's wrong.</h2>
+      <p class="lead">KawaScan is the app at the heart of Kawa — a fast, offline-first diagnosis tool designed for real farms, not lab conditions.</p>
+      <div class="feats">
+        <div class="feat"><span class="ic"><svg><use href="#w-camera"/></svg></span><div><b>Diagnose from one photo</b><p>Identify rust, borer, and leaf spot in seconds with a confidence score.</p></div></div>
+        <div class="feat"><span class="ic"><svg><use href="#w-bolt"/></svg></span><div><b>Built for the field</b><p>High-contrast, large-type, works offline and in bright sunlight.</p></div></div>
+        <div class="feat"><span class="ic"><svg><use href="#w-wallet"/></svg></span><div><b>Pay with Mobile Money</b><p>Buy scan packs in a tap — no card or bank account needed.</p></div></div>
+        <div class="feat"><span class="ic"><svg><use href="#w-volume"/></svg></span><div><b>In your language</b><p>Read-aloud results in Luganda so anyone on the farm can act.</p></div></div>
+      </div>
+      <div class="cta">
+        <a href="#get" class="wbtn wbtn-primary"><svg><use href="#w-play"/></svg>Get KawaScan</a>
+        <a href="KawaScan Redesign.html" class="wbtn wbtn-ghost">View the screens</a>
+      </div>
+    </div>
+
+    <div class="phones">
+      <!-- Home -->
+      <div class="phone">
+        <div class="screen">
+          <div class="sb"><span>9:41</span><span class="r"><i></i><i></i></span></div>
+          <div class="pv">
+            <div class="ph-head"><h3>Hello, farmer</h3><div class="loc"><b></b>Nakaseke</div></div>
+            <div class="strip">
+              <div class="n"><b>3</b><span>scans left</span></div>
+              <a class="buy"><svg><use href="#w-wallet"/></svg>Buy more</a>
+            </div>
+            <div class="cta"><button class="pbtn"><svg><use href="#w-camera"/></svg>Scan a plant</button></div>
+            <div class="ph-sec">
+              <div class="ph-eye">Common problems</div>
+              <div class="plist">
+                <div class="prow"><span class="tile"><svg><use href="#w-leaf"/></svg></span><span class="lbl">Coffee Leaf Rust</span><svg class="chev"><use href="#w-chev"/></svg></div>
+                <div class="prow"><span class="tile"><svg><use href="#w-leaf"/></svg></span><span class="lbl">Coffee Berry Borer</span><svg class="chev"><use href="#w-chev"/></svg></div>
+              </div>
+            </div>
+            <div style="flex:1"></div>
+            <div class="tabbar">
+              <div class="tab on"><svg><use href="#w-home"/></svg><span>Home</span></div>
+              <div class="tab"><svg><use href="#w-clock"/></svg><span>History</span></div>
+              <div style="display:grid;place-items:center"><div class="camkey"><svg><use href="#w-camera"/></svg></div></div>
+              <div class="tab"><svg><use href="#w-wallet"/></svg><span>Pay</span></div>
+              <div class="tab"><svg><use href="#w-user"/></svg><span>Account</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pay -->
+      <div class="phone">
+        <div class="screen">
+          <div class="sb"><span>9:41</span><span class="r"><i></i><i></i></span></div>
+          <div class="pv">
+            <div class="pay-head"><h3>Add scans</h3><p>Pay with Mobile Money — no card needed.</p></div>
+            <div class="plan">
+              <span class="radio"><svg><use href="#w-check"/></svg></span>
+              <span class="info"><span class="pn"><b>Starter</b></span><span class="sc">10 scans · AI diagnosis</span></span>
+              <span class="price"><b>UGX 2,000</b><span>one-time</span></span>
+            </div>
+            <div class="plan sel">
+              <span class="radio"><svg><use href="#w-check"/></svg></span>
+              <span class="info"><span class="pn"><b>Premium</b><span class="tag">Recommended</span></span><span class="sc">10 scans · expert-reviewed</span></span>
+              <span class="price"><b>UGX 5,000</b><span>one-time</span></span>
+            </div>
+            <div style="padding:18px 18px 0"><button class="pbtn">Pay UGX 5,000</button></div>
+            <div style="flex:1"></div>
+            <div class="tabbar">
+              <div class="tab"><svg><use href="#w-home"/></svg><span>Home</span></div>
+              <div class="tab"><svg><use href="#w-clock"/></svg><span>History</span></div>
+              <div style="display:grid;place-items:center"><div class="camkey"><svg><use href="#w-camera"/></svg></div></div>
+              <div class="tab on"><svg><use href="#w-wallet"/></svg><span>Pay</span></div>
+              <div class="tab"><svg><use href="#w-user"/></svg><span>Account</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FIELD PHOTO BANNER ============== -->
+<section style="padding:0">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div style="position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);margin:0 0 0;">
+      <image-slot id="kawa-field" style="width:100%;height:440px;display:block" shape="rect" fit="cover" placeholder="Drop a photo of farmers / coffee fields"></image-slot>
+      <div style="position:absolute;left:0;bottom:0;padding:40px;background:linear-gradient(transparent, rgba(14,19,17,.72));width:100%;color:#fff;pointer-events:none">
+        <span class="eyebrow on-dark plain" style="color:#fff">In the field · Uganda</span>
+        <p style="font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-0.02em;margin-top:10px;max-width:22ch;line-height:1.08">Designed with the farmers who use it, every season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STEPS ============== -->
+<section class="steps" id="farmers">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From a worried leaf to a clear next step.</h2>
+    </div>
+    <div class="grid">
+      <div class="step">
+        <div class="num">Step 01</div>
+        <div class="big-num">01</div>
+        <h4>Scan</h4>
+        <p>Open KawaScan and photograph the affected leaf or berry. No typing, no signal required.</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 02</div>
+        <div class="big-num">02</div>
+        <h4>Diagnose</h4>
+        <p>Get the likely disease, how severe it is, and how confident the result is — in seconds.</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 03</div>
+        <div class="big-num">03</div>
+        <h4>Act</h4>
+        <p>Follow a plain-language treatment plan, read aloud in your language, and protect the rest of your crop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="grid">
+      <div class="sec-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions, answered.</h2>
+        <p>Can't find what you need? Reach our team on <a href="https://www.instagram.com/trykawa" style="color:var(--accent);font-weight:600">Instagram</a>.</p>
+      </div>
+      <div class="list">
+        <details open>
+          <summary>What is Kawa?<span class="pm"><svg><use href="#w-plus"/></svg></span></summary>
+          <div class="ans">Kawa is a Ugandan company building digital tools for coffee farmers and agriculture. Our flagship app, KawaScan, diagnoses plant disease from a photo; we also run a marketplace and an agronomy knowledge guide.</div>
+        </details>
+        <details>
+          <summary>Are you planning to support iPhone?<span class="pm"><svg><use href="#w-plus"/></svg></span></summary>
+          <div class="ans">Android comes first because it's what most farmers use. An iOS version is on the roadmap — join the list and we'll let you know when it's ready.</div>
+        </details>
+        <details>
+          <summary>How much does it cost to use Kawa?<span class="pm"><svg><use href="#w-plus"/></svg></span></summary>
+          <div class="ans">Getting started is free. KawaScan gives you free scans to begin, then you can buy scan packs with Mobile Money — from UGX 2,000 for 10 scans. The marketplace is free to post on.</div>
+        </details>
+        <details>
+          <summary>What happens after the free testing period?<span class="pm"><svg><use href="#w-plus"/></svg></span></summary>
+          <div class="ans">Nothing is locked away. Once your free scans are used, you simply top up with a scan pack whenever you need one — there's no subscription and no auto-charge.</div>
+        </details>
+        <details>
+          <summary>Is Kawa only available in Uganda?<span class="pm"><svg><use href="#w-plus"/></svg></span></summary>
+          <div class="ans">We're built and tested in Uganda first, but the tools work anywhere coffee grows. We're expanding across East Africa — tell us where you farm and we'll prioritise it.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA BAND ============== -->
+<section class="cta-band" id="get" style="padding:0">
+  <div class="container inner">
+    <div>
+      <h2>Get Kawa on Android.</h2>
+      <p>Start with KawaScan free, then build from there. One account for every Kawa tool.</p>
+    </div>
+    <div class="actions">
+      <a href="#" class="wbtn wbtn-on-dark"><svg><use href="#w-play"/></svg>Download for Android</a>
+      <a href="https://www.instagram.com/kakooza_harunah/" class="wbtn wbtn-dark-ghost">Talk to the team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container">
+    <div class="top">
+      <div>
+        <a href="#" class="brand"><span class="mark"><svg><use href="#w-leaf"/></svg></span>Kawa</a>
+        <p class="about">Digital solutions for coffee farmers and agriculture. Made with care in Uganda.</p>
+      </div>
+      <div class="fcol">
+        <b>Product</b>
+        <div class="lk"><a href="#kawascan">KawaScan</a><a href="#solutions">Kawa Market</a><a href="#farmers">Agronomy guide</a><a href="#get">Pricing</a></div>
+      </div>
+      <div class="fcol">
+        <b>Company</b>
+        <div class="lk"><a href="#solutions">About</a><a href="#faq">Help</a><a href="https://www.instagram.com/kakooza_harunah/">Contact</a></div>
+      </div>
+      <div class="fcol">
+        <b>Get the app</b>
+        <div class="lk"><a href="#get">Android</a><a href="#get">iOS (soon)</a></div>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Made with ❤ in Uganda © 2026 Kawa</span>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/kakooza-harunah-701882350/" aria-label="LinkedIn"><svg><use href="#w-in"/></svg></a>
+        <a href="https://www.instagram.com/kakooza_harunah/" aria-label="Instagram"><svg><use href="#w-ig"/></svg></a>
+        <a href="https://www.tiktok.com/@devharunah" aria-label="TikTok"><svg><use href="#w-tt"/></svg></a>
+        <a href="https://www.threads.com/@kakooza_harunah" aria-label="Threads"><svg><use href="#w-th"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
