@@ -1,4 +1,5 @@
 import { siteConfig } from "@/src/lib/site-config";
+import Reveal from "./reveal";
 
 const columns = [
   {
@@ -22,15 +23,17 @@ export default function Reposition() {
   return (
     <section className="band-dark reposition">
       <div className="container">
-        <span className="eyebrow on-dark">Our mission</span>
-        <p className="big">
-          {siteConfig.name} is no longer just a marketplace.{" "}
-          <span className="hl">
-            We build digital solutions for the people who grow coffee — and the
-            farms they depend on.
-          </span>
-        </p>
-        <div className="cols">
+        <Reveal>
+          <span className="eyebrow on-dark">Our mission</span>
+          <p className="big">
+            {siteConfig.name} is no longer just a marketplace.{" "}
+            <span className="hl">
+              We build digital solutions for the people who grow coffee — and
+              the farms they depend on.
+            </span>
+          </p>
+        </Reveal>
+        <Reveal className="cols" delay={0.05}>
           {columns.map((c) => (
             <div className="col" key={c.k}>
               <div className="k">{c.k}</div>
@@ -38,7 +41,7 @@ export default function Reposition() {
               <p>{c.body}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

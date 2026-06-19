@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "./reveal";
 
 /**
  * The site's one large photographic moment: a full-width field photo with a
@@ -8,16 +9,17 @@ export default function FieldBanner() {
   return (
     <section style={{ padding: "56px 0 24px" }}>
       <div className="container">
-        <div
-          style={{
-            position: "relative",
-            borderRadius: 24,
-            overflow: "hidden",
-            border: "1px solid var(--line)",
-            marginTop: 16,
-            boxShadow: "0 24px 60px -28px rgba(14,19,17,.35)",
-          }}
-        >
+        <Reveal y={28}>
+          <div
+            style={{
+              position: "relative",
+              borderRadius: 24,
+              overflow: "hidden",
+              border: "1px solid var(--line)",
+              marginTop: 16,
+              boxShadow: "0 24px 60px -28px rgba(14,19,17,.35)",
+            }}
+          >
           <div
             style={{
               position: "relative",
@@ -70,7 +72,8 @@ export default function FieldBanner() {
               Designed with the farmers who use it, every season.
             </p>
           </div>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

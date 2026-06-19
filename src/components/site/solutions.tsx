@@ -1,5 +1,6 @@
 import { ScanLine, Store, BookOpen, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
+import Reveal from "./reveal";
 
 const cards = [
   {
@@ -36,7 +37,7 @@ export default function Solutions() {
   return (
     <section className="solutions ksection" id="solutions">
       <div className="container">
-        <div className="sec-head">
+        <Reveal className="sec-head">
           <span className="eyebrow">What we build</span>
           <h2>One toolkit for the coffee value chain.</h2>
           <p>
@@ -44,8 +45,8 @@ export default function Solutions() {
             about. They share one account, one design language, and work on the
             phones people already own.
           </p>
-        </div>
-        <div className="sgrid">
+        </Reveal>
+        <Reveal className="sgrid" delay={0.05}>
           {cards.map((c) => {
             const Icon = c.icon;
             return (
@@ -71,7 +72,7 @@ export default function Solutions() {
               </article>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

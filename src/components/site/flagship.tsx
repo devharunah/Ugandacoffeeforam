@@ -1,6 +1,7 @@
 import { Camera, Zap, Wallet, Volume2, Play } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
 import KawaPhone from "./kawa-phone";
+import Reveal from "./reveal";
 
 const feats = [
   {
@@ -29,7 +30,7 @@ export default function Flagship() {
   return (
     <section className="flagship ksection" id="kawascan">
       <div className="container fgrid">
-        <div className="copy">
+        <Reveal className="copy">
           <span className="eyebrow">Flagship · KawaScan</span>
           <h2>Point your phone at a leaf. Know what&apos;s wrong.</h2>
           <p className="lead">
@@ -67,12 +68,12 @@ export default function Flagship() {
               See how it works
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="phones">
+        <Reveal className="phones" y={16} delay={0.08}>
           <KawaPhone screen="home" problems={["Coffee Leaf Rust", "Coffee Berry Borer"]} />
           <KawaPhone screen="pay" />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

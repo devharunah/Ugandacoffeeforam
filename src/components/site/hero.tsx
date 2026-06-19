@@ -1,12 +1,13 @@
 import { Play, Leaf } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
 import KawaPhone from "./kawa-phone";
+import Reveal from "./reveal";
 
 export default function Hero() {
   return (
     <section className="hero" id="top">
       <div className="container hgrid">
-        <div className="copy">
+        <Reveal className="copy" once y={18}>
           <span className="eyebrow">{siteConfig.tagline}</span>
           <h1>
             Software for the people who <em>grow coffee.</em>
@@ -46,9 +47,9 @@ export default function Hero() {
               <span>Works in the field</span>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="stage">
+        <Reveal className="stage" once y={14} delay={0.12}>
           <div className="badge">
             <span className="dot">
               <Leaf />
@@ -56,7 +57,7 @@ export default function Hero() {
             Diagnosing Coffee Leaf Rust…
           </div>
           <KawaPhone screen="home" />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

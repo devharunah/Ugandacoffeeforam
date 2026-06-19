@@ -1,18 +1,19 @@
 import { Play } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
+import Reveal from "./reveal";
 
 export default function CtaBand() {
   return (
     <section className="cta-band" id="get" style={{ padding: 0 }}>
       <div className="container inner">
-        <div>
+        <Reveal>
           <h2>Get KawaCoffee on Android.</h2>
           <p>
             Start with KawaScan free, then build from there. One account for
             every {siteConfig.name} tool.
           </p>
-        </div>
-        <div className="actions">
+        </Reveal>
+        <Reveal className="actions" delay={0.05}>
           <a
             href={siteConfig.androidDownloadUrl}
             target="_blank"
@@ -30,7 +31,7 @@ export default function CtaBand() {
           >
             Talk to the team
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

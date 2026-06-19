@@ -1,3 +1,5 @@
+import Reveal from "./reveal";
+
 const steps = [
   {
     num: "Step 01",
@@ -23,11 +25,11 @@ export default function Steps() {
   return (
     <section className="steps ksection" id="farmers">
       <div className="container">
-        <div className="sec-head">
+        <Reveal className="sec-head">
           <span className="eyebrow">How it works</span>
           <h2>From a worried leaf to a clear next step.</h2>
-        </div>
-        <div className="stgrid">
+        </Reveal>
+        <Reveal className="stgrid" delay={0.05}>
           {steps.map((s) => (
             <div className="step" key={s.big}>
               <div className="num">{s.num}</div>
@@ -36,7 +38,7 @@ export default function Steps() {
               <p>{s.body}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

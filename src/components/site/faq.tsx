@@ -3,6 +3,7 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import { Plus } from "lucide-react";
 import { siteConfig } from "@/src/lib/site-config";
+import Reveal from "./reveal";
 
 const faqs = [
   {
@@ -32,7 +33,7 @@ export default function FAQ() {
     <section className="faq ksection" id="faq">
       <div className="container">
         <div className="fgrid">
-          <div className="sec-head">
+          <Reveal className="sec-head">
             <span className="eyebrow">FAQ</span>
             <h2>Questions, answered.</h2>
             <p>
@@ -47,14 +48,15 @@ export default function FAQ() {
               </a>
               .
             </p>
-          </div>
+          </Reveal>
 
-          <Accordion.Root
-            type="single"
-            collapsible
-            defaultValue="item-0"
-            className="list"
-          >
+          <Reveal as="div" delay={0.05}>
+            <Accordion.Root
+              type="single"
+              collapsible
+              defaultValue="item-0"
+              className="list"
+            >
             {faqs.map((item, i) => (
               <Accordion.Item
                 key={item.q}
@@ -74,7 +76,8 @@ export default function FAQ() {
                 </Accordion.Content>
               </Accordion.Item>
             ))}
-          </Accordion.Root>
+            </Accordion.Root>
+          </Reveal>
         </div>
       </div>
     </section>
